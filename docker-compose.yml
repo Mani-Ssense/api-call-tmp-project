@@ -5,3 +5,9 @@ services:
     build: .
     volumes: 
       - .:/app
+    ports:
+      - 5000:5000
+    environment:
+      - FLASK_APP=run.py
+      - FLASK_ENV=development
+    command: flask run --reload --host 0.0.0.0
