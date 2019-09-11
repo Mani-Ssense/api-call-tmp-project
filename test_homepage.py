@@ -15,4 +15,3 @@ class TestHomePage(TestCase):
         self.assertEqual(r.status_code, 200)
         
         self.assertEqual(r.get_data().decode(), 'home page')
-
