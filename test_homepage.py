@@ -8,7 +8,6 @@ class TestHomePage(TestCase):
         self.app = app.test_client()
 
     def test_home(self):
-        
         r = self.app.get('/')
         
         self.assertEqual(r.status_code, 200)
@@ -16,7 +15,6 @@ class TestHomePage(TestCase):
         self.assertEqual(r.get_data().decode(), 'home page')
 
     def test_hello_view(self):
-        
         r = self.app.get('/hello-view/mani')
         
         self.assertEqual(r.status_code, 200)
