@@ -16,5 +16,12 @@ def load_view(name):
 
     return render_template('hello.html', **data)
 
+@app.route('/json')
+def json_data():
+    return {
+        'health': 'passed',
+        'rest': 'unknown'
+    }
+
 if __name__ == '__main__':
     app.run()

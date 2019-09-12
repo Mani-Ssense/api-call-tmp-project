@@ -1,8 +1,8 @@
 from unittest import TestCase, main
 from run import app
+import requests
 
-
-class TestHomePage(TestCase):
+class TestRoutes(TestCase):
     def setUp(self):
         app.config['TESTING'] = True
         self.app = app.test_client()
@@ -20,6 +20,13 @@ class TestHomePage(TestCase):
         self.assertEqual(r.status_code, 200)
         
         self.assertTrue('Hello MANI' in r.get_data().decode())
+
+    def test_get_json(self):
+        r = self.app.get('/json')        
+        self.assertEqual(r.json['health'], 'passed')
+
+        res = requests.get('http://localhost:5000/json')
+        self.assertEqual(res.json()['health'], 'passed')
 
 
 if __name__ == "__main__":
