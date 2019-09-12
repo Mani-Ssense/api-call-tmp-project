@@ -15,5 +15,14 @@ class TestHomePage(TestCase):
         
         self.assertEqual(r.get_data().decode(), 'home page')
 
+    def test_hello_view(self):
+        
+        r = self.app.get('/hello-view/mani')
+        
+        self.assertEqual(r.status_code, 200)
+        
+        self.assertTrue('Hello MANI' in r.get_data().decode())
+
+
 if __name__ == "__main__":
     main()
